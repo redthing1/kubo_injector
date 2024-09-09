@@ -22,17 +22,19 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
+
+#ifdef __linux
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "injector.h"
-
-#ifdef __linux
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dirent.h>
 #include <unistd.h>
 #include <limits.h>
+#include <linux/limits.h>
+#include <fcntl.h>
 
 #define INVALID_PID -1
 static pid_t find_process(const char *name)
@@ -70,6 +72,11 @@ static pid_t find_process(const char *name)
     return pid;
 }
 #endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "injector.h"
 
 #ifdef _WIN32
 #include <windows.h>

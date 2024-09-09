@@ -22,6 +22,8 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
+
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <inttypes.h>
@@ -35,6 +37,7 @@
 #include <limits.h>
 #include <unistd.h>
 #include "injector_internal.h"
+#include <linux/limits.h>
 
 #ifdef __LP64__
 #define Elf_Ehdr Elf64_Ehdr
